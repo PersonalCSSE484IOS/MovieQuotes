@@ -13,7 +13,7 @@
 		174208E527F1DDAD00E835C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 174208E427F1DDAD00E835C7 /* Assets.xcassets */; };
 		174208E827F1DDAD00E835C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 174208E627F1DDAD00E835C7 /* LaunchScreen.storyboard */; };
 		174208F027F1E02A00E835C7 /* MovieQuotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174208EF27F1E02A00E835C7 /* MovieQuotesTableViewController.swift */; };
-		174208F227F1E59800E835C7 /* MovieQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174208F127F1E59800E835C7 /* MovieQuote.swift */; };
+		174208F427F1F13600E835C7 /* MovieQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174208F327F1F13600E835C7 /* MovieQuote.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		174208E727F1DDAD00E835C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		174208E927F1DDAD00E835C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		174208EF27F1E02A00E835C7 /* MovieQuotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuotesTableViewController.swift; sourceTree = "<group>"; };
-		174208F127F1E59800E835C7 /* MovieQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuote.swift; sourceTree = "<group>"; };
+		174208F327F1F13600E835C7 /* MovieQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuote.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 				174208E427F1DDAD00E835C7 /* Assets.xcassets */,
 				174208E627F1DDAD00E835C7 /* LaunchScreen.storyboard */,
 				174208E927F1DDAD00E835C7 /* Info.plist */,
-				174208F127F1E59800E835C7 /* MovieQuote.swift */,
+				174208F327F1F13600E835C7 /* MovieQuote.swift */,
 			);
 			path = MovieQuotes;
 			sourceTree = "<group>";
@@ -142,7 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				174208DC27F1DDAB00E835C7 /* AppDelegate.swift in Sources */,
-				174208F227F1E59800E835C7 /* MovieQuote.swift in Sources */,
+				174208F427F1F13600E835C7 /* MovieQuote.swift in Sources */,
 				174208F027F1E02A00E835C7 /* MovieQuotesTableViewController.swift in Sources */,
 				174208DE27F1DDAB00E835C7 /* SceneDelegate.swift in Sources */,
 			);
