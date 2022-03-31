@@ -14,6 +14,13 @@
 		174208E827F1DDAD00E835C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 174208E627F1DDAD00E835C7 /* LaunchScreen.storyboard */; };
 		174208F027F1E02A00E835C7 /* MovieQuotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174208EF27F1E02A00E835C7 /* MovieQuotesTableViewController.swift */; };
 		174208F427F1F13600E835C7 /* MovieQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174208F327F1F13600E835C7 /* MovieQuote.swift */; };
+		175CAF1B27F5D2A9004F370F /* MovieQuotesCollectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175CAF1A27F5D2A9004F370F /* MovieQuotesCollectionManager.swift */; };
+		175CAF1D27F5D38B004F370F /* MovieQuotesDocumentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175CAF1C27F5D38B004F370F /* MovieQuotesDocumentManager.swift */; };
+		175CAF1F27F5D4A3004F370F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175CAF1E27F5D4A3004F370F /* Constants.swift */; };
+		175CAF2227F5DB88004F370F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 175CAF2127F5DB88004F370F /* FirebaseAnalytics */; };
+		175CAF2427F5DB88004F370F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 175CAF2327F5DB88004F370F /* FirebaseFirestore */; };
+		175CAF2627F5DE6A004F370F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 175CAF2527F5DE6A004F370F /* GoogleService-Info.plist */; };
+		17E0412C27F3343100FDCAD2 /* MyMoviewQuoteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E0412B27F3343100FDCAD2 /* MyMoviewQuoteDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +33,11 @@
 		174208E927F1DDAD00E835C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		174208EF27F1E02A00E835C7 /* MovieQuotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuotesTableViewController.swift; sourceTree = "<group>"; };
 		174208F327F1F13600E835C7 /* MovieQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuote.swift; sourceTree = "<group>"; };
+		175CAF1A27F5D2A9004F370F /* MovieQuotesCollectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuotesCollectionManager.swift; sourceTree = "<group>"; };
+		175CAF1C27F5D38B004F370F /* MovieQuotesDocumentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuotesDocumentManager.swift; sourceTree = "<group>"; };
+		175CAF1E27F5D4A3004F370F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		175CAF2527F5DE6A004F370F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		17E0412B27F3343100FDCAD2 /* MyMoviewQuoteDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMoviewQuoteDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +45,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				175CAF2227F5DB88004F370F /* FirebaseAnalytics in Frameworks */,
+				175CAF2427F5DB88004F370F /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +80,11 @@
 				174208E627F1DDAD00E835C7 /* LaunchScreen.storyboard */,
 				174208E927F1DDAD00E835C7 /* Info.plist */,
 				174208F327F1F13600E835C7 /* MovieQuote.swift */,
+				17E0412B27F3343100FDCAD2 /* MyMoviewQuoteDetailController.swift */,
+				175CAF1A27F5D2A9004F370F /* MovieQuotesCollectionManager.swift */,
+				175CAF1C27F5D38B004F370F /* MovieQuotesDocumentManager.swift */,
+				175CAF1E27F5D4A3004F370F /* Constants.swift */,
+				175CAF2527F5DE6A004F370F /* GoogleService-Info.plist */,
 			);
 			path = MovieQuotes;
 			sourceTree = "<group>";
@@ -86,6 +105,10 @@
 			dependencies = (
 			);
 			name = MovieQuotes;
+			packageProductDependencies = (
+				175CAF2127F5DB88004F370F /* FirebaseAnalytics */,
+				175CAF2327F5DB88004F370F /* FirebaseFirestore */,
+			);
 			productName = MovieQuotes;
 			productReference = 174208D827F1DDAB00E835C7 /* MovieQuotes.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +137,9 @@
 				Base,
 			);
 			mainGroup = 174208CF27F1DDAB00E835C7;
+			packageReferences = (
+				175CAF2027F5DB88004F370F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 174208D927F1DDAB00E835C7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -129,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				174208E827F1DDAD00E835C7 /* LaunchScreen.storyboard in Resources */,
+				175CAF2627F5DE6A004F370F /* GoogleService-Info.plist in Resources */,
 				174208E527F1DDAD00E835C7 /* Assets.xcassets in Resources */,
 				174208E327F1DDAB00E835C7 /* Main.storyboard in Resources */,
 			);
@@ -141,10 +168,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				175CAF1D27F5D38B004F370F /* MovieQuotesDocumentManager.swift in Sources */,
+				17E0412C27F3343100FDCAD2 /* MyMoviewQuoteDetailController.swift in Sources */,
 				174208DC27F1DDAB00E835C7 /* AppDelegate.swift in Sources */,
 				174208F427F1F13600E835C7 /* MovieQuote.swift in Sources */,
+				175CAF1B27F5D2A9004F370F /* MovieQuotesCollectionManager.swift in Sources */,
 				174208F027F1E02A00E835C7 /* MovieQuotesTableViewController.swift in Sources */,
 				174208DE27F1DDAB00E835C7 /* SceneDelegate.swift in Sources */,
+				175CAF1F27F5D4A3004F370F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +395,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		175CAF2027F5DB88004F370F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		175CAF2127F5DB88004F370F /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 175CAF2027F5DB88004F370F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		175CAF2327F5DB88004F370F /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 175CAF2027F5DB88004F370F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 174208D027F1DDAB00E835C7 /* Project object */;
 }
