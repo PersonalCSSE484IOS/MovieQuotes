@@ -10,5 +10,4 @@ import Foundation
 let kMovieQuotesCollectionPath = "MovieQuotes"
 let kMovieQuoteMovie = "movie"
 let kMovieQuoteQuote = "quote"
-
-let kmovieQuoteCreated = "created"
+let kMovieQuoteLastTouched = "lastTouched"
