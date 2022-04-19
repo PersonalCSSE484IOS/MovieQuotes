@@ -18,9 +18,16 @@ class MovieQuotesCollectionManager{
     }
     var latestmovieQuotes = [MovieQuote]()
     
-    func startListening(changeListener: @escaping (()-> Void))->ListenerRegistration{
-        let query = _collectionRef.order(by: kMovieQuoteLastTouched, descending: true).limit(to:50)
-         return query.addSnapshotListener{querySnapshot, error in
+    func startListening(filterByAuthor authorFilter: String?, changeListener: @escaping (()-> Void))->ListenerRegistration{
+        
+        var query = _collectionRef.order(by: kMovieQuoteLastTouched, descending: true).limit(to:50)
+        
+        if let authorFilter = authorFilter{
+            print("TODO: FILTER by author ")
+            query = query.whereField(kMovieQuoteAuthorUid, isEqualTo: authorFilter)
+        }
+        
+        return query.addSnapshotListener{querySnapshot, error in
             guard let documents = querySnapshot?.documents else{
                 print("error")
                 return
@@ -38,11 +45,25 @@ class MovieQuotesCollectionManager{
     }
     
     func add(_ mq: MovieQuote){
-        _collectionRef.addDocument(data: [kMovieQuoteQuote: mq.quote, kMovieQuoteMovie: mq.movie, kMovieQuoteLastTouched: Timestamp.init()]){ err in
-            if let err = err{
-                print("Error adding document \(err)")
+        var ref: DocumentReference? = nil
+        ref = _collectionRef.addDocument(data:[
+            kMovieQuoteQuote: mq.quote,
+            kMovieQuoteMovie: mq.movie,
+            kMovieQuoteLastTouched: Timestamp.init(),
+            kMovieQuoteAuthorUid: AuthManager.shared.currentUser!.uid
+            
+        ]){error in
+            if let err = error{
+                print("error here \(error)")
+            }else{
+                print("Document added with id\(ref?.documentID)")
             }
         }
+//        _collectionRef.addDocument(data: [kMovieQuoteQuote: mq.quote, kMovieQuoteMovie: mq.movie, kMovieQuoteLastTouched: Timestamp.init()]){ err in
+//            if let err = err{
+//                print("Error adding document \(err)")
+//            }
+//        }
     }
     
     func delete(_ documentId: String){

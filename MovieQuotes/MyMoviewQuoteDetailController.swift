@@ -26,6 +26,15 @@ class MyMoviewQuoteDetailController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func showOrHideEditButton(){
+        if(AuthManager.shared.currentUser?.uid == MovieQuoteDocumentManager.shared.latestMovieQuote?.authorUid){
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(showEditQuoteDialoge))
+        }else{
+            print("This is not your quote, don't allow dit")
+            navigationItem.rightBarButtonItem = nil
+        }
+    }
+    
 //    override func viewWilllAppear(_animated: Bool){
 //        super.viewWilllAppear(animated)
 //        updateView()
@@ -35,6 +44,7 @@ class MyMoviewQuoteDetailController: UIViewController {
         movieQuotesListenerRegistration = MovieQuoteDocumentManager.shared.startListening(for: movieQuoteDocumentId!){
             print("TODO")
             self.updateView()
+            self.showOrHideEditButton()
         }
     }
     
