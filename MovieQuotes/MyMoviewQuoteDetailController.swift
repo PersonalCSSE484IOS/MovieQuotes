@@ -13,10 +13,13 @@ class MyMoviewQuoteDetailController: UIViewController {
     @IBOutlet weak var MovieLabel: UILabel!
     @IBOutlet weak var quoteLabel: UILabel!
     
+    @IBOutlet weak var authorStack: UIImageView!
+    @IBOutlet weak var authorName: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     //var movieQuote: MovieQuote!
     var movieQuoteDocumentId: String!
     var movieQuotesListenerRegistration: ListenerRegistration?
-
+    var userListenerRegistration: ListenerRegistration?
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.edit, target: self, action: #selector(showEditQuoteDialoge))
@@ -45,6 +48,14 @@ class MyMoviewQuoteDetailController: UIViewController {
             print("TODO")
             self.updateView()
             self.showOrHideEditButton()
+            
+            self.authorStack.isHidden = true
+            if let authorUid = MovieQuoteDocumentManager.shared.latestMovieQuote?.authorUid{
+                UserDocumentManager.shared.stopListening(self.userListenerRegistration)
+                self.userListenerRegistration = UserDocumentManager.shared.startListening(for: authorUid){
+                    self.updateAuthorBox()
+                }
+            }
         }
     }
     
@@ -108,5 +119,16 @@ class MyMoviewQuoteDetailController: UIViewController {
         
         
         present(alertController, animated: true)
+        
+        
+    }
+    
+    
+    func updateAuthorBox(){
+        self.authorStack.isHidden   = UserDocumentManager.shared.name.isEmpty && UserDocumentManager.shared.photoUrl.isEmpty
+        authorName.text = UserDocumentManager.shared.name
+        if !UserDocumentManager.shared.photoUrl.isEmpty{
+            ImageUtils.load(imageView: imageView, from: UserDocumentManager.shared.photoUrl)
+        }
     }
 }

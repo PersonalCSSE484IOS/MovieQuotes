@@ -26,6 +26,5 @@ class MovieQuote{
         self.quote = data?[kMovieQuoteQuote] as! String
         self.movie = data?[kMovieQuoteMovie] as! String
         self.authorUid = data?[kMovieQuoteAuthorUid] as? String? ?? ""
-
     }
 }

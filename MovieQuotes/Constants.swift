@@ -16,3 +16,10 @@ let kMovieQuoteAuthorUid = "authorUid"
 let kshowListSegue = "showListSegue"
 
 let kRosefireRegToken = "1c5e77c1-bc59-4a4d-ae53-bc727414d98b"
+
+//Firestore - User documents
+let kUserCollectionPath = "Users"
+let kUserName = "name"
+let kUserPhotoURL = "photoURL"
+
+let kProfileSegue = "showProfileSegue"

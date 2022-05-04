@@ -18,36 +18,36 @@ class MovieQuotesTableViewController: UITableViewController {
     let kMovieQuoteCell = "MovieQuoteCell"
     let kMovieQuoteSegue = "MyMovieDetailView"
     var movieQuotesListenerRegistration: ListenerRegistration?
-    var logoutHandle : AuthStateDidChangeListenerHandle?
     
     var isShowingAllQuotes = true
-    
+    var logoutHandle: AuthStateDidChangeListenerHandle?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = editButtonItem //** add the edit button **
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(showAddQuoteDialog))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "☰", style: .plain, target: self, action:#selector(showMenu))
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+//        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add,
+                                                                 target: self,
+                                                                 action: #selector(showAddQuoteDialog))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "☰",
+//                                                                 style: UIBarButtonItem.Style.plain,
+//                                                                 target: self,
+//                                                                 action: #selector(showMenue))
+        
+
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         startListeningForMovieQuotes()
-        
-       //TODO: Eventually use real login, but for now use guest mdoe
-//        if(AuthManager.shared.isSignedIn){
-//            print("User is already signed in")
-//        }else{
-//            print("No USER.")
-//            AuthManager.shared.signInAnonymously()
-//        }
-        
-//        if(!AuthManager.shared.isSignedIn){
-//           print("You are here without a user")
-//            navigationController?.popViewController(animated: true)
-//        }
-        logoutHandle = AuthManager.shared.addLogoutObserver(callback: {print("Someone signed out")
+        logoutHandle = AuthManager.shared.addLogoutObserver {
+            print("Someone sign out, go back to LoginViewController")
             self.navigationController?.popViewController(animated: true)
-        })
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,19 +57,18 @@ class MovieQuotesTableViewController: UITableViewController {
     }
     
     func startListeningForMovieQuotes(){
-        stopListeningForMovieQuotes() //this will do nothing for the first time but be useful later
-        movieQuotesListenerRegistration = MovieQuotesCollectionManager.shared.startListening(filterByAuthor: isShowingAllQuotes ? nil: AuthManager.shared.currentUser?.uid, changeListener: {
-//            print("The movie quotes were updated")
-//            for mq in MovieQuotesCollectionManager.shared.latestmovieQuotes{
-//                print("\(mq.quote) in \(mq.movie)")
-//            }
+//        movieQuotesListenerRegistration = MovieQuotesCollectionManager.shared.startListening{
+//            self.tableView.reloadData()
+//        }
+        stopListeningForMovieQuotes()// does nothing the 1st time, stop the last listener
+        movieQuotesListenerRegistration = MovieQuotesCollectionManager.shared.startListening(filterByAuthor: isShowingAllQuotes ? nil : AuthManager.shared.currentUser?.uid)
+        {
             self.tableView.reloadData()
-        })
+        }
     }
     
     func stopListeningForMovieQuotes(){
         MovieQuotesCollectionManager.shared.stopListening(movieQuotesListenerRegistration)
-
     }
     
     @objc func showMenu(){
@@ -101,7 +100,7 @@ class MovieQuotesTableViewController: UITableViewController {
         present(alertController, animated: true)
     }
     
-    func showAddQuoteDialog(){
+    @objc func showAddQuoteDialog(){
         print("You press the add")
         let alertController = UIAlertController(title: "create a new Movie Quote", message: "", preferredStyle: UIAlertController.Style.alert)
                 alertController.addTextField { textField in
@@ -145,14 +144,15 @@ class MovieQuotesTableViewController: UITableViewController {
         cell.MovieLabel.text = mq.movie
         return cell
     }
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-
             //TODO: Implement delete
             let mqToDelete = MovieQuotesCollectionManager.shared.latestmovieQuotes[indexPath.row]
             MovieQuotesCollectionManager.shared.delete(mqToDelete.documentId!)
         }
     }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == kMovieQuoteSegue{
